@@ -2,7 +2,7 @@ package main.calculate;
 
 import java.util.Scanner;
 
-public class converter {
+public class Converter {
     public static void main(String[] args) {
         try {
             Scanner choose = new Scanner(System.in);
