@@ -1,15 +1,17 @@
 package main.calculate;
 
+import main.menu.MainMenu;
+
 import java.util.Scanner;
 
 public class Converter {
-    public static void main(String[] args) {
+    public void ConvertMenu(){
         try {
             Scanner choose = new Scanner(System.in);
             System.out.println("請選擇需要轉換的類型。 (數字)");
             System.out.println("1. Prefix Length");
             System.out.println("2. Subnet Mask");
-            System.out.println("3. 退出");
+            System.out.println("3. 返回上一頁");
             while (choose.hasNext()) {
                 int type = Integer.parseInt(choose.next());
                 switch (type) {
@@ -20,8 +22,8 @@ public class Converter {
                         subMaskToPrefix();
                         return;
                     case 3:
-                        System.out.println("已退出。");
-                        return;
+                        System.out.println("正在返回上一頁....");
+                        MainMenu.main(new String[10]);
                     default:
                         throw new NumberFormatException();
                 }
@@ -29,11 +31,11 @@ public class Converter {
             choose.close();
         } catch (NumberFormatException e) {
             System.out.println("無效的數值!");
-            main(args);
+            ConvertMenu();
         }
     }
 
-    private static void subMaskToPrefix(){
+    private void subMaskToPrefix(){
         try {
             Scanner submask = new Scanner(System.in);
             System.out.println("請輸入網絡遮罩 IP:");
@@ -56,7 +58,7 @@ public class Converter {
         }
     }
 
-    private static void prefixToSubMask() {
+    private void prefixToSubMask() {
         try {
             int prefixLength;
             Scanner prefix = new Scanner(System.in);
